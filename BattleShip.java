@@ -61,4 +61,40 @@ public class BattleShip {
         System.out.print(String.valueOf(row + 1));
     }
 
+    static Coordinate getRandomEndCoordinate(final Coordinate start, final int distance) {
+        int choices = 0;
+        if (start.column() >= distance) {
+            choices++;
+        }
+        if (start.column() < BattleShip.SIZE - distance) {
+            choices++;
+        }
+        if (start.row() >= distance) {
+            choices++;
+        }
+        if (start.row() < BattleShip.SIZE - distance) {
+            choices++;
+        }
+        int skip = Utility.getRandomInt(choices);
+        if (start.column() >= distance) {
+            skip--;
+            if (skip < 0) {
+                return new Coordinate(start.column() - distance, start.row());
+            }
+        }
+        if (start.column() < BattleShip.SIZE - distance) {
+            skip--;
+            if (skip < 0) {
+                return new Coordinate(start.column() + distance, start.row());
+            }
+        }
+        if (start.row() >= distance) {
+            skip--;
+            if (skip < 0) {
+                return new Coordinate(start.column(), start.row() - distance);
+            }
+        }
+        return new Coordinate(start.column(), start.row() + distance);
+    }
+
 }
