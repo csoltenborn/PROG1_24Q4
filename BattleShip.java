@@ -54,4 +54,11 @@ public class BattleShip {
         return String.format(BattleShip.ENTER_SHIP_COORDINATE_PROMPT, "End", length);
     }
 
+    static void showRowNumber(final int row) {
+        if (row < 9) {
+            System.out.print(" ");
+        }
+        System.out.print(String.valueOf(row + 1));
+    }
+
 }
