@@ -97,4 +97,21 @@ public class BattleShip {
         return new Coordinate(start.column(), start.row() + distance);
     }
 
+    static void showField(final Field field, final boolean showShips) {
+        switch (field) {
+            case SHIP:
+                System.out.print(showShips ? "O" : " ");
+                break;
+            case SHIP_HIT:
+                System.out.print("*");
+                break;
+            case WATER_HIT:
+                System.out.print("X");
+                break;
+            case WATER:
+            default:
+                System.out.print(" ");
+        }
+    }
+
 }
