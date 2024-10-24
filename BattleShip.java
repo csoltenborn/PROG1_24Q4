@@ -4,6 +4,8 @@ public class BattleShip {
 
     static final int SIZE = 10;
 
+    static final String ENTER_SHIP_COORDINATE_PROMPT = "Geben Sie die %skoordinaten für ein Schiff der Länge %d ein: ";
+
     static int distance(final Coordinate start, final Coordinate end) {
         return Math.abs(start.column() - end.column()) + Math.abs(start.row() - end.row());
     }
@@ -34,6 +36,22 @@ public class BattleShip {
 
     static int getMinSurroundingRow(final Coordinate start, final Coordinate end) {
         return Math.max(0, Math.min(start.row(), end.row()) - 1);
+    }
+
+    static Coordinate toCoordinate(final String input) {
+        return new Coordinate(input.toUpperCase().charAt(0) - 65, Integer.parseInt(input.substring(1)) - 1);
+    }
+
+    static boolean isValidCoordinate(final String input) {
+        return input.matches("[A-Ja-j]([1-9]|10)");
+    }
+
+    static String getStartCoordinatePrompt(final int length) {
+        return String.format(BattleShip.ENTER_SHIP_COORDINATE_PROMPT, "Start", length);
+    }
+
+    static String getEndCoordinatePrompt(final int length) {
+        return String.format(BattleShip.ENTER_SHIP_COORDINATE_PROMPT, "End", length);
     }
 
 }
