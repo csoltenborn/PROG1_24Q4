@@ -189,4 +189,12 @@ public class BattleShip {
         return true;
     }
 
+    static void setAllFree(final Field[][] field) {
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field[i].length; j++) {
+                field[i][j] = Field.WATER;
+            }
+        }
+    }
+
 }
