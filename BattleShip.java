@@ -114,4 +114,20 @@ public class BattleShip {
         }
     }
 
+    static void placeShip(final Coordinate start, final Coordinate end, final Field[][] field) {
+        if (start.column() == end.column()) {
+            for (int row = Math.min(start.row(), end.row()); row <= Math.max(start.row(), end.row()); row++) {
+                field[start.column()][row] = Field.SHIP;
+            }
+        } else {
+            for (
+                    int column = Math.min(start.column(), end.column());
+                    column <= Math.max(start.column(), end.column());
+                    column++
+            ) {
+                field[column][start.row()] = Field.SHIP;
+            }
+        }
+    }
+
 }
