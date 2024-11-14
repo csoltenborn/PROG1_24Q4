@@ -130,4 +130,21 @@ public class BattleShip {
         }
     }
 
+    static void showRow(final int row, final Field[][] ownField, final Field[][] otherField) {
+        BattleShip.showRowNumber(row);
+        System.out.print(" |");
+        for (int column = 0; column < BattleShip.SIZE; column++) {
+            BattleShip.showField(ownField[column][row], true);
+            System.out.print("|");
+        }
+        System.out.print("   ");
+        BattleShip.showRowNumber(row);
+        System.out.print(" |");
+        for (int column = 0; column < BattleShip.SIZE; column++) {
+            BattleShip.showField(otherField[column][row], false);
+            System.out.print("|");
+        }
+        System.out.println();
+    }
+
 }
