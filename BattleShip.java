@@ -1,5 +1,3 @@
-import java.io.*;
-
 public class BattleShip {
 
     static final int SIZE = 10;
@@ -207,6 +205,34 @@ public class BattleShip {
             }
         }
         return result;
+    }
+
+    static void fillWaterHits(final Coordinate shot, final Field[][] field) {
+        int columnMin = shot.column();
+        while (columnMin > 0 && field[columnMin][shot.row()] == Field.SHIP_HIT) {
+            columnMin--;
+        }
+        int columnMax = shot.column();
+        while (columnMax < BattleShip.SIZE - 1 && field[columnMax][shot.row()] == Field.SHIP_HIT) {
+            columnMax++;
+        }
+        int rowMin = shot.row();
+        while (rowMin > 0 && field[shot.column()][rowMin] == Field.SHIP_HIT) {
+            rowMin--;
+        }
+        int rowMax = shot.row();
+        while (rowMax < BattleShip.SIZE - 1 && field[shot.column()][rowMax] == Field.SHIP_HIT) {
+            rowMax++;
+        }
+        for (int column = columnMin; column <= columnMax; column++) {
+            for (int row = rowMin; row <= rowMax; row++) {
+                switch (field[column][row]) {
+                    if (field[column][row] == Field.WATER) {
+                        field[column][row] = Field.WATER_HIT;
+                    }
+                }
+            }
+        }
     }
 
 }
