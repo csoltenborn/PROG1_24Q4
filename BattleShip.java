@@ -157,4 +157,36 @@ public class BattleShip {
         System.out.println();
     }
 
+    static boolean shipSunk(final Coordinate shot, final Field[][] field) {
+        int column = shot.column();
+        while (column < BattleShip.SIZE - 1 && field[column][shot.row()] == Field.SHIP_HIT) {
+            column++;
+        }
+        if (field[column][shot.row()] == Field.SHIP) {
+            return false;
+        }
+        column = shot.column();
+        while (column > 0 && field[column][shot.row()] == Field.SHIP_HIT) {
+            column--;
+        }
+        if (field[column][shot.row()] == Field.SHIP) {
+            return false;
+        }
+        int row = shot.row();
+        while (row < BattleShip.SIZE -1 && field[shot.column()][row] == Field.SHIP_HIT) {
+            row++;
+        }
+        if (field[shot.column()][row] == Field.SHIP) {
+            return false;
+        }
+        row = shot.row();
+        while (row > 0 && field[shot.column()][row] == Field.SHIP_HIT) {
+            row--;
+        }
+        if (field[shot.column()][row] == Field.SHIP) {
+            return false;
+        }
+        return true;
+    }
+
 }
