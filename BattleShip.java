@@ -147,4 +147,14 @@ public class BattleShip {
         System.out.println();
     }
 
+    static void showFields(final Field[][] ownField, final Field[][] otherField) {
+        System.out.println("    A B C D E F G H I J        A B C D E F G H I J ");
+        BattleShip.showSeparatorLine();
+        for (int row = 0; row < BattleShip.SIZE; row++) {
+            BattleShip.showRow(row, ownField, otherField);
+            BattleShip.showSeparatorLine();
+        }
+        System.out.println();
+    }
+
 }
