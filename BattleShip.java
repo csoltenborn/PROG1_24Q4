@@ -226,13 +226,30 @@ public class BattleShip {
         }
         for (int column = columnMin; column <= columnMax; column++) {
             for (int row = rowMin; row <= rowMax; row++) {
-                switch (field[column][row]) {
-                    if (field[column][row] == Field.WATER) {
-                        field[column][row] = Field.WATER_HIT;
-                    }
+                if (field[column][row] == Field.WATER) {
+                    field[column][row] = Field.WATER_HIT;
                 }
             }
         }
+    }
+
+    static boolean noConflict(final Coordinate start, final Coordinate end, final Field[][] field) {
+        for (
+                int column = BattleShip.getMinSurroundingColumn(start, end);
+                column <= BattleShip.getMaxSurroundingColumn(start, end);
+                column++
+        ) {
+            for (
+                    int row = BattleShip.getMinSurroundingRow(start, end);
+                    row <= BattleShip.getMaxSurroundingRow(start, end);
+                    row++
+            ) {
+                if (field[column][row] != Field.WATER) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }
