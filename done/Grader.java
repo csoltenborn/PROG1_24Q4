@@ -2,6 +2,11 @@ package done;
 
 public class Grader {
 
+    public static void main(String[] args) {
+        int points = 96;
+        System.out.println("Punkte: " + points + ", Note: " + grade(points));
+    }
+
     static String grade(final int points) {
         if (points > 100 || points < 0) {
             return "Ungültige Punktzahl";
