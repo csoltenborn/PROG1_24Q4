@@ -10,6 +10,17 @@ public class Blatt6A1 {
         return new SinglyLinkedList(new ListNode(value, list.root()));
     }
 
+    static SinglyLinkedList addLast(final SinglyLinkedList list, final int value) {
+        return new SinglyLinkedList(addLast(list.root(), value));
+    }
+
+    static ListNode addLast(final ListNode current, final int value) {
+        if (current == null) {
+            return new ListNode(value, null);
+        }
+        return new ListNode(current.value, addLast(current.next(), value));
+    }
+
     static String toString(final SinglyLinkedList list) {
         return toString(list.root());
     }
@@ -30,6 +41,9 @@ public class Blatt6A1 {
         SinglyLinkedList list = new SinglyLinkedList(new ListNode(42, null));
         list = addFirst(list, 23);
 
+        System.out.println(toString(list));
+
+        list = addLast(list, 69);
         System.out.println(toString(list));
     }
 
