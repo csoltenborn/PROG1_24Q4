@@ -292,4 +292,13 @@ public class BattleShip {
         }
         throw new IllegalStateException("No unshot field found and not won!");
     }
+
+    static Coordinate readEndCoordinate(final int length) {
+        return BattleShip.readCoordinate(BattleShip.getEndCoordinatePrompt(length));
+    }
+
+    static Coordinate readStartCoordinate(final int length) {
+        return BattleShip.readCoordinate(BattleShip.getStartCoordinatePrompt(length));
+    }
+
 }
