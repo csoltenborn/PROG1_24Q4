@@ -21,6 +21,20 @@ public class Blatt6A1 {
         return new ListNode(current.value, addLast(current.next(), value));
     }
 
+    static SinglyLinkedList remove(final SinglyLinkedList list, final int value) {
+        return new SinglyLinkedList(remove(list.root(), value));
+    }
+
+    static ListNode remove(final ListNode current, final int value) {
+        if (current == null) {
+            return null;
+        }
+        if (current.value == value) {
+            return current.next;
+        }
+        return new ListNode(current.value, remove(current.next(), value));
+    }
+
     static String toString(final SinglyLinkedList list) {
         return toString(list.root());
     }
@@ -44,6 +58,9 @@ public class Blatt6A1 {
         System.out.println(toString(list));
 
         list = addLast(list, 69);
+        System.out.println(toString(list));
+
+        list = remove(list, 42);
         System.out.println(toString(list));
     }
 
