@@ -346,4 +346,13 @@ public class BattleShip {
         BattleShip.shot(BattleShip.getRandomUnshotCoordinate(ownField), ownField);
     }
 
+    static void outputWinner(final Field[][] ownField, final Field[][] otherField) {
+        BattleShip.showFields(ownField, otherField);
+        if (BattleShip.allHit(otherField)) {
+            System.out.println("Du hast gewonnen!");
+        } else {
+            System.out.println("Der Computer hat gewonnen!");
+        }
+    }
+
 }
