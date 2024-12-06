@@ -310,4 +310,15 @@ public class BattleShip {
         return BattleShip.allHit(ownField) || BattleShip.allHit(otherField);
     }
 
+    static boolean validPosition(
+            final Coordinate start,
+            final Coordinate end,
+            final int length,
+            final Field[][] field
+    ) {
+        return BattleShip.onOneLine(start, end)
+                && BattleShip.distance(start, end) == length - 1
+                && BattleShip.noConflict(start, end, field);
+    }
+
 }
