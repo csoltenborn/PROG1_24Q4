@@ -270,4 +270,26 @@ public class BattleShip {
         return BattleShip.toCoordinate(input);
     }
 
+    static Coordinate getRandomUnshotCoordinate(final Field[][] field) {
+        int choices = 0;
+        for (int column = 0; column < BattleShip.SIZE; column++) {
+            for (int row = 0; row < BattleShip.SIZE; row++) {
+                if (field[column][row] == Field.WATER || field[column][row] == Field.SHIP) {
+                    choices++;
+                }
+            }
+        }
+        int choice = Utility.getRandomInt(choices);
+        for (int column = 0; column < BattleShip.SIZE; column++) {
+            for (int row = 0; row < BattleShip.SIZE; row++) {
+                if (field[column][row] == Field.WATER || field[column][row] == Field.SHIP) {
+                    choice--;
+                    if (choice <= 0) {
+                        return new Coordinate(column, row);
+                    }
+                }
+            }
+        }
+        throw new IllegalStateException("No unshot field found and not won!");
+    }
 }
