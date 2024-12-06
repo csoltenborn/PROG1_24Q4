@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 public class BattleShip {
 
     static final int SIZE = 10;
@@ -250,6 +252,22 @@ public class BattleShip {
             }
         }
         return true;
+    }
+
+    static Coordinate readCoordinate(final String prompt) {
+        String input = "";
+        while (!BattleShip.isValidCoordinate(input)) {
+            System.out.print(prompt);
+            try {
+                input = Utility.readStringFromConsole();
+            } catch (final IOException e) {
+                input = "";
+            }
+            if ("exit".equals(input)) {
+                System.exit(0);
+            }
+        }
+        return BattleShip.toCoordinate(input);
     }
 
 }
