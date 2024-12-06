@@ -321,4 +321,20 @@ public class BattleShip {
                 && BattleShip.noConflict(start, end, field);
     }
 
+    static void shot(final Coordinate shot, final Field[][] field) {
+        switch (field[shot.column()][shot.row()]) {
+            case SHIP:
+                field[shot.column()][shot.row()] = Field.SHIP_HIT;
+                if (BattleShip.shipSunk(shot, field)) {
+                    BattleShip.fillWaterHits(shot, field);
+                }
+                break;
+            case WATER:
+                field[shot.column()][shot.row()] = Field.WATER_HIT;
+                break;
+            default:
+                // do nothing
+        }
+    }
+
 }
