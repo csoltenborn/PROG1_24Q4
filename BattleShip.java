@@ -4,7 +4,7 @@ public class BattleShip {
 
     static final int SIZE = 10;
     static final int ALL_HIT = 14;
-    
+
     static final String ENTER_SHIP_COORDINATE_PROMPT = "Geben Sie die %skoordinaten für ein Schiff der Länge %d ein: ";
 
     static int distance(final Coordinate start, final Coordinate end) {
@@ -304,6 +304,10 @@ public class BattleShip {
 
     static boolean allHit(final Field[][] field) {
         return BattleShip.countHits(field) == BattleShip.ALL_HIT;
+    }
+
+    static boolean endCondition(final Field[][] ownField, final Field[][] otherField) {
+        return BattleShip.allHit(ownField) || BattleShip.allHit(otherField);
     }
 
 }
