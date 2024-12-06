@@ -337,4 +337,13 @@ public class BattleShip {
         }
     }
 
+    static void turn(final Field[][] ownField, final Field[][] otherField) {
+        BattleShip.showFields(ownField, otherField);
+        BattleShip.shot(
+                BattleShip.readCoordinate("Geben Sie die Koordinaten Ihres nächsten Schusses ein: "),
+                otherField
+        );
+        BattleShip.shot(BattleShip.getRandomUnshotCoordinate(ownField), ownField);
+    }
+
 }
