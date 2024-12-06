@@ -7,6 +7,10 @@ public class Blatt4A1 {
     }
 
     static int max(final int[] array) {
+        if (array == null || array.length < 1) {
+            throw new IllegalArgumentException("array is null or empty");
+        }
+        
         int result = array[0];
         for (int i = 1; i < array.length; i++) {
             result = Math.max(result, array[i]);
