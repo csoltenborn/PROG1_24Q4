@@ -355,4 +355,35 @@ public class BattleShip {
         }
     }
 
+    static Field[][] initOtherField() {
+        final Field[][] otherField = new Field[BattleShip.SIZE][BattleShip.SIZE];
+        BattleShip.setAllFree(otherField);
+        for (int length = 5; length > 1; length--) {
+            final Coordinate start = BattleShip.getRandomCoordinate();
+            final Coordinate end = BattleShip.getRandomEndCoordinate(start, length - 1);
+            if (BattleShip.validPosition(start, end, length, otherField)) {
+                BattleShip.placeShip(start, end, otherField);
+            } else {
+                length++;
+            }
+        }
+        return otherField;
+    }
+
+    static Field[][] initOwnField(final Field[][] otherField) {
+        final Field[][] ownField = new Field[BattleShip.SIZE][BattleShip.SIZE];
+        BattleShip.setAllFree(ownField);
+        for (int length = 5; length > 1; length--) {
+            BattleShip.showFields(ownField, otherField);
+            final Coordinate start = BattleShip.readStartCoordinate(length);
+            final Coordinate end = BattleShip.readEndCoordinate(length);
+            if (BattleShip.validPosition(start, end, length, ownField)) {
+                BattleShip.placeShip(start, end, ownField);
+            } else {
+                length++;
+            }
+        }
+        return ownField;
+    }
+
 }
