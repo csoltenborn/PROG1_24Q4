@@ -386,4 +386,14 @@ public class BattleShip {
         return ownField;
     }
 
+    public static void main(final String[] args) {
+        System.out.println();
+        final Field[][] otherField = BattleShip.initOtherField();
+        final Field[][] ownField = BattleShip.initOwnField(otherField);
+        while (!BattleShip.endCondition(ownField, otherField)) {
+            BattleShip.turn(ownField, otherField);
+        }
+        BattleShip.outputWinner(ownField, otherField);
+    }
+
 }
